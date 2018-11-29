@@ -1,0 +1,37 @@
+language: cpp
+
+os:
+  - linux
+
+compiler:
+  - gcc
+  - clang
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - cmake
+      - cmake-data
+
+before_install:
+  - echo "Installing compile dependencies..."
+  - sudo apt-get update -y -qq
+  - sudo apt-get install -y -qq libyajl-dev libxml2-dev libxquilla-dev
+  - if [ "$CXX" = "clang++" ]; then sudo apt-get install -y  -qq libstdc++-6-dev; fi
+  - if [ "$CXX" = "g++" ]; then sudo apt-get install -y -qq g++-7; fi
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-7" CC="gcc-7"; fi
+  - mkdir dependencies
+  - cd dependencies
+  - git clone https://github.com/AperLambda/lambdacommon.git
+  - cd lambdacommon
+  - git submodule update --init
+  - cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .
+  - cmake --build .
+  - sudo make install
+  - cd ../..
+
+script:
+  - sh build.sh
+  - sh test.sh
