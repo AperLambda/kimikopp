@@ -11,6 +11,7 @@
 #define KIMIKO_MANAGER_H
 
 #include "command.h"
+#include <optional>
 
 namespace kimiko
 {
