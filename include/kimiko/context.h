@@ -15,6 +15,15 @@
 
 namespace kimiko
 {
+	/*!
+	 * A command context.
+	 *
+	 * Represents a context within the command is executed.
+	 *
+	 * @tparam S The typename of the sender.
+	 * @version 1.0.0
+	 * @since 1.0.0
+	 */
 	template<class S>
 	class CommandContext
 	{
@@ -44,6 +53,14 @@ namespace kimiko
 		}
 	};
 
+	/*!
+	 * CLISender.
+	 *
+	 * Represents a command sender in a command line interface.
+	 *
+	 * @version 1.0.0
+	 * @since 1.0.0
+	 */
 	class CLISender
 	{
 	private:
@@ -54,18 +71,38 @@ namespace kimiko
 	public:
 		CLISender(const CLISender &) = delete;
 
+		/*!
+		 * Gets the name of the sender.
+		 * @return The name of the user.
+		 */
 		std::string get_name() const;
 
+		/*!
+		 * Sends a message to the terminal output stream.
+		 * @param message The message to send.
+		 */
 		void send_message(const std::string &message) const;
 
 		CLISender &operator=(const CLISender &) = delete;
 
+		/*!
+		 * Gets the singleton.
+		 * @return The singleton.
+		 */
 		static CLISender &get() noexcept
 		{
 			return singleton;
 		}
 	};
 
+	/*!
+	 * CLICommandContext
+	 *
+	 * Represents a command line context within a command is executed.
+	 *
+	 * @version 1.0.0
+	 * @since 1.0.0
+	 */
 	class CLICommandContext : public CommandContext<CLISender &>
 	{
 	public:

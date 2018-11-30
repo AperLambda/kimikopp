@@ -6,7 +6,7 @@ include(GenerateExportHeader)
 include(utils/CompileUtility)
 include(utils/InstallUtility)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 # Options
 option(KIMIKO_INSTALL "Generate installation target" ON)
@@ -21,7 +21,7 @@ include_directories(${LAMBDACOMMON_INCLUDE_DIRS})
 
 # All files:
 # There is the C++ header files.
-set(HEADER_FILES include/kimiko/kimiko.h include/kimiko/context.h include/kimiko/command.h)
+set(HEADER_FILES include/kimiko/kimiko.h include/kimiko/context.h include/kimiko/command.h include/kimiko/manager.h include/kimiko/parser.h include/kimiko/arguments.h)
 # There is the C++ source files.
 set(SOURCE_FILES src/kimiko.cpp src/context.cpp)
 

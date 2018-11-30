@@ -137,6 +137,11 @@ namespace kimiko
 			return _executor(context, *this, label, args);
 		}
 
+		bool operator==(const Command &other) const
+		{
+			return std::tie(_name, _parent, _description, _executor) ==
+				   std::tie(other._name, other._parent, other._description, other._executor);
+		}
 	private:
 		lambdacommon::ResourceName handleLocalExecution(const CommandContext<S> &context, const std::string &label, const std::vector<std::string> &args)
 		{

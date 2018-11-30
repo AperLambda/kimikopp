@@ -11,7 +11,8 @@
 #ifndef KIMIKO_LIBRARY_H
 #define KIMIKO_LIBRARY_H
 
-#include <string>
+#include "arguments.h"
+#include "manager.h"
 
 #define KIMIKO_VERSION_MAJOR 0
 #define KIMIKO_VERSION_MINOR 0
